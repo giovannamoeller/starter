@@ -1,3 +1,3 @@
 # Starter
 
-Repositório destinado aos cursos "starter" da RocketSeat
+Repositório destinado aos cursos "starter" da RocketSeat.
