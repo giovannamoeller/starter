@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Manipulando a DOM</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    </head>
+    <body>
+        <div class="app">
+            <input type="text" name="nome" id="nome">
+            <button class="btn">Adicionar</button>
+        </div>
+        <script>
+            //var inputElement = document.getElementById('nome');
+            //var inputElement = document.getElementsByTagName('input'); // retorna um vetor
+            //var inputElement = document.getElementsByClassName('btn');
+            //var inputElement = document.querySelector('div#app input');
+            var inputElement = document.querySelector('div.app input[name="nome"]');
+            var btnElement = document.querySelector('div.app button.btn');
+            btnElement.onclick = function() {
+                var text = inputElement.value;
+                alert(text);
+            }
+            
+        </script>
+    </body>
+</html>
