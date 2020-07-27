@@ -4,4 +4,4 @@ function soma(a, b) {
 }
 
 var resultado = soma(2, 4);
-console.log(resultado);
+console.log(resultado); 
