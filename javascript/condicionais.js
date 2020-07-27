@@ -7,6 +7,7 @@ function retornaSexo(sexo) {
     } else {
         return 'Outro'
     }
+    // sexo === 'M' ? 'Masculino' : 'Feminino'
 }
 
 function retornaSexoSwitch(sexo) {
