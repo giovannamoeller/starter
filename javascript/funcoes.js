@@ -1,4 +1,4 @@
-function soma(a, b) { 
+function soma(a, b) {
     var resultado = a + b;
     return resultado;
 }
