@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Manipulando a DOM</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    </head>
+    <body>
+        <div class="app">
+            <input type="text" id="nome">
+        </div>
+        <script>
+            var linkElement = document.createElement('a');
+            linkElement.setAttribute('href', 'http://rocketseat.com.br');
+            linkElement.setAttribute('target', '_blank');
+            var textElement = document.createTextNode('Acessar site da RocketSeat');
+            linkElement.appendChild(textElement);
+            
+            var divApp = document.querySelector('.app');
+            divApp.appendChild(linkElement);
+            
+            var inputElement = document.querySelector('#nome');
+            divApp.removeChild(inputElement);
+            
+        </script>
+    </body>
+</html>
