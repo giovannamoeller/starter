@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Desafios - Manipulando a DOM</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    </head>
+    <body>
+        <div class="app">
+            <input type="text" name="nome">
+            <button onclick="adicionar()">Adicionar</button>
+            <ul></ul>
+        </div>
+        <script>
+            var nomes = [];
+
+            function adicionar() {
+                document.querySelector('div.app ul').innerHTML = ''
+                var newValue = document.querySelector('input[name="nome"]').value;
+                nomes.push(newValue);
+                for(nome of nomes) {
+                    var newItem = document.createElement('li');
+                    var newText = document.createTextNode(nome);
+                    newItem.appendChild(newText)
+                    document.querySelector('div.app ul').appendChild(newItem);
+                }
+                document.querySelector('input[name="nome"]').value = '';
+            }      
+        </script>
+    </body>
+</html>

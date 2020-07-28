@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Desafios - Manipulando a DOM</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    </head>
+    <body>
+        <div class="app">
+            <ul></ul>
+        </div>
+        <script>
+            var nomes = ['Diego', 'Gabriel', 'Giovanna'];
+            for(nome of nomes) {
+                var newItem = document.createElement('li');
+                var newText = document.createTextNode(nome);
+                newItem.appendChild(newText)
+                document.querySelector('div.app ul').appendChild(newItem);
+            }
+        </script>
+    </body>
+</html>

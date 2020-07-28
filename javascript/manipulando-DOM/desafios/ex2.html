@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Desafios - Manipulando a DOM</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    </head>
+    <body>
+        <div class="app">
+            <button>Clique aqui</button>
+        </div>
+        <script>
+            var container = document.querySelector('div.app');
+            var buttonElement = document.querySelector('div.app button');
+            var createDiv;
+            buttonElement.addEventListener('click', function criarElemento() {
+                createDiv = document.createElement('div');
+                createDiv.style.width = 100;
+                createDiv.style.height = 100;
+                createDiv.style.backgroundColor = 'red';
+                createDiv.style.marginBottom = 10;
+                createDiv.style.marginTop = 10;
+                container.appendChild(createDiv);
+                
+                createDiv.addEventListener("mouseover", () => {
+                    let newColor = getRandomColor();
+                    createDiv.style.backgroundColor = newColor
+                })
+            })
+
+            function getRandomColor() {
+                var letters = "0123456789ABCDEF"; var color = "#";
+                for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)]; }
+                console.log(color)
+                return color;
+            }
+        </script>
+    </body>
+</html>
