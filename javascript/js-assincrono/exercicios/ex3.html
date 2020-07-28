@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Manipulando a DOM</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    </head>
+    <body>
+        <div class="app">
+            <input type="text" name="nome" id="nome">
+            <button onclick="getAPI()">Procurar</button>
+            <ul></ul>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            var dataList = document.querySelector('ul');
+            var createError;
+            function getAPI() {
+                var inputValue = document.querySelector('input').value;
+                const url = `https://api.github.com/users/${inputValue}/repos`;
+                renderLoading();
+                axios.get(url)
+                .then(response => {
+                    dataList.innerHTML = "";
+                    for(data of response.data) {
+                        var createRepo = document.createElement('li');
+                        var repoName = document.createTextNode(data.name);
+                        createRepo.appendChild(repoName);
+                        document.querySelector('ul').appendChild(createRepo);
+                    }
+                }).catch(reject => {
+                    if(reject.response.status == 404) {
+                        dataList.innerHTML = "";
+                        createError = document.createElement('p');
+                        var createText = document.createTextNode('O usuário não existe');
+                        createError.appendChild(createText);
+                        document.querySelector('div.app').appendChild(createError);
+                    }
+                })
+            }
+
+            function renderLoading() {
+                dataList.innerHTML = "";
+                if(createError) createError.innerHTML  = "";
+                var textElement = document.createTextNode("Carregando...");
+                var loadingElement = document.createElement("li");
+                loadingElement.appendChild(textElement);
+                dataList.appendChild(loadingElement);
+            }
+        </script>
+    </body>
+</html>
