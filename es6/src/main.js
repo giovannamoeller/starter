@@ -6,3 +6,4 @@ console.log(multiplicacao(3, 3));
 console.log(divisao(3, 3));
 
 alert('Oi!');
+
