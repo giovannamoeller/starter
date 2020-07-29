@@ -1,9 +1,10 @@
-import { soma, sub, multiplicacao, divisao } from './funcoes';
+import axios from 'axios';
 
-console.log(soma(2, 3));
-console.log(sub(3, 3));
-console.log(multiplicacao(3, 3));
-console.log(divisao(3, 3));
+class API {
+    static async getUserInfo(username) {
+        const response = await axios.get(`https://api.github.com/users/${username}`);
+        console.log(response);
+    }
+}
 
-alert('Oi!');
-
+API.getUserInfo('giovannamoeller');
