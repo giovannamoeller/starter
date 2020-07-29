@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.soma = soma;\n\nfunction soma(a, b) {\n  return a + b;\n}\n\n//# sourceURL=webpack:///./funcoes.js?");
+eval("\n\n/* export function soma(a, b) {\n    return a + b;\n}\n\nexport function sub(a, b) {\n    return a - b;\n} */\nmodule.exports = {\n  soma: function soma(a, b) {\n    return a + b;\n  },\n  sub: function sub(a, b) {\n    return a = b;\n  },\n  multiplicacao: function multiplicacao(a, b) {\n    return a * b;\n  },\n  divisao: function divisao(a, b) {\n    return a / b;\n  }\n};\n\n//# sourceURL=webpack:///./funcoes.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _funcoes = __webpack_require__(/*! ./funcoes */ \"./funcoes.js\");\n\nconsole.log((0, _funcoes.soma)(1, 2));\n\n//# sourceURL=webpack:///./main.js?");
+eval("\n\nvar _funcoes = __webpack_require__(/*! ./funcoes */ \"./funcoes.js\");\n\nconsole.log((0, _funcoes.soma)(2, 3));\nconsole.log((0, _funcoes.sub)(3, 3));\nconsole.log((0, _funcoes.multiplicacao)(3, 3));\nconsole.log((0, _funcoes.divisao)(3, 3));\n\n//# sourceURL=webpack:///./main.js?");
 
 /***/ })
 
