@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from './components/Header';
+import './styles.css';
 
 function App() {
   return (
     <div className = "app">
-      <h1>Oi Gi!</h1>
+      <Header/>
     </div>
   );
 }

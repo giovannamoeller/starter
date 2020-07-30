@@ -1,0 +1,12 @@
+/* configurações mais padrão aqui */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fafafa;
+    color: #333;
+}
