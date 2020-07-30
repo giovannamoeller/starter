@@ -2,5 +2,9 @@ const express = require('express');
 
 const app = express();
 
-app.listen(8000);
+app.get('/', (req, res) => {
+    return res.send('Bem - vindo!');
+});
 
+
+app.listen(8000);
