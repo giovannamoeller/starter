@@ -1,8 +1,11 @@
+import api from './api';
+
 class App {
     constructor() {
         this.repositories = [];
 
         this.formEl = document.getElementById('repo-form');
+        this.inputEl = document.querySelector('input');
         this.listElement = document.getElementById('repo-list');
 
         this.registerHandlers();
@@ -12,23 +15,47 @@ class App {
         this.formEl.onsubmit = event => this.addRepository(event);
     }
 
-    addRepository(event) {
+    setLoading(loading = true) {
+        if(loading) {
+            let loadingEl = document.createElement('span');
+            loadingEl.appendChild(document.createTextNode('Carregando...'));
+            loadingEl.setAttribute('id', 'loading');
+            this.formEl.appendChild(loadingEl);
+        } else {
+            document.getElementById('loading').remove();
+        }
+    }
+
+    async addRepository(event) {
+        this.repositories = [];
         event.preventDefault(); // não deixa o funcionamento comum como recarregar a página
+        let inputValue = this.inputEl.value;
+        if(inputValue.length == 0) {
+            return; // função para de executar
+        }
+        this.setLoading();
+        try {
+            const response = await api.get(`/repos/${inputValue}`);
+            const { name, description, clone_url, owner : { avatar_url } } = response.data;
+            this.repositories.push({
+                name,
+                description: description || 'Sem descrição disponível',
+                avatar_url,
+                clone_url
+            });
 
-        this.repositories.push({
-            name: 'starter',
-            description: 'mto top',
-            avatar_url: 'https://avatars2.githubusercontent.com/u/47362960?v=4',
-            html_url: 'https://github.com/giovannamoeller/starter'
-        });
+            this.inputEl.value = '';
+            this.render();
 
-        this.render();
-
-        console.log(this.repositories);
+        } catch(err) {
+            alert('O repositório não existe');
+        }
+        this.setLoading(false);
     }
 
     render() {
         this.listElement.innerHTML = '';
+        console.log(this.repositories)
         this.repositories.forEach(repo => {
             let imgEl = document.createElement('img');
             imgEl.setAttribute('src', repo.avatar_url);
@@ -40,7 +67,7 @@ class App {
             descriptionEl.appendChild(document.createTextNode(repo.description));
 
             let urlEl = document.createElement('a');
-            urlEl.setAttribute('href', repo.url);
+            urlEl.setAttribute('href', repo.html_url);
             urlEl.setAttribute('target', '_blank');
             urlEl.appendChild(document.createTextNode('Acessar'));
 
