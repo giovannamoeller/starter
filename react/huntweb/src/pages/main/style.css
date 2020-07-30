@@ -40,3 +40,24 @@
     background-color: #7159c1;
     color: white;
 }
+
+.product-list .action {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.product-list .action button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    background: #7159c1;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.product-list .action button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
