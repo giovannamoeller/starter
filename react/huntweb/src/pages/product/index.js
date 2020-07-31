@@ -7,6 +7,7 @@ export default class Product extends Component {
         product: {}
     }
     async componentDidMount() { 
+        console.log(this.props)
         const { id } = this.props.match.params;
         const response = await api.get(`/products/${id}`);
         this.setState({ product: response.data })
@@ -18,7 +19,7 @@ export default class Product extends Component {
                 <h1>{product.title}</h1>
                 <p>{product.description}</p>
                 <p>
-                    URL: <a href={product.url} target="_blank">Acessar link</a>
+                    URL: <a href={product.url} target="_blank">{product.url}</a>
                 </p>
             </div>
         )
